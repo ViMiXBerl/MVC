@@ -1,0 +1,19 @@
+.stores-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    height: 50px;
+
+    background-color: #edf3f7;
+}
+
+.stores-header__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.stores-header__item {
+    margin: 10px 0 20px;
+}

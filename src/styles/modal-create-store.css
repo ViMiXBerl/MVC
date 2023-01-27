@@ -1,0 +1,103 @@
+.modal-create-store {
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    font-size: 12px;
+    color: #4b4a4a;
+    background-color: #00000099;
+    z-index: 10;
+}
+
+.modal-create-store__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.modal-create-store__header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 1px solid #b1b0b0;
+}
+
+.modal-create-store__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90%;
+    margin: 10px 0;
+}
+
+.input-wrapper {
+    display: inline;
+    position: relative;
+}
+
+.validation-error {
+    border: 2px solid #ff0000;
+}
+
+.validation-success {
+    border: 2px solid rgb(0, 255, 21);
+}
+
+.input-wrapper::after {
+    content: attr(data-validation-message);
+    color: black;
+    padding: 0 2px;
+    font-size: 0.8rem;
+    display: inline-block;
+    background: #ffb6c1;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 21px);
+    width: 98%;
+    z-index: 11;
+}
+
+.modal-create-store__input {
+    font-weight: 200;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.modal-create-store__footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background-color: #434f5b;
+}
+
+.modal-create-store__footer-wrapper {
+    padding: 5px;
+}
+
+.modal-create-store__button {
+    margin: 0 3px;
+    padding: 5px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.modal-create-button {
+    background-color: #578bd8;
+    color: #fff;
+}
+
+.modal-cancel-button {
+    background-color: #434f5b;
+    color: #edf3f7;
+}
+
+.required {
+    color: #ff0000;
+}

@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,100;1,200&display=swap");
+
+body {
+    margin: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+.stores-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+@media (max-width: 933.5px) {
+    .contact-details__item {
+        font-size: 12px !important;
+    }
+}
+
+@media (max-width: 800.5px) {
+    .contact-details__item {
+        font-size: 8px !important;
+    }
+}
+
+@media (max-width: 711.5px) {
+    .main-stores-list {
+        display: none;
+    }
+
+    .main-store-details {
+        width: 100% !important;
+    }
+
+    .main-store-details__footer {
+        width: 100% !important;
+    }
+
+    .main-store-details__footer-wrapper {
+        width: 93% !important;
+    }
+
+    .contact-details__item {
+        font-size: 8px !important;
+    }
+
+    .not-selected-stores {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 568.5px) {
+    .main-stores-list {
+        display: none;
+    }
+
+    .main-store-details {
+        width: 100% !important;
+    }
+
+    .contact-details__item {
+        font-size: 8px !important;
+    }
+
+    .not-selected-stores {
+        width: 100% !important;
+    }
+}

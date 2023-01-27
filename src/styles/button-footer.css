@@ -1,0 +1,24 @@
+.button__footer {
+    background-color: transparent;
+    border-radius: 2px;
+    outline: none;
+    font-size: 15px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.button__footer:hover {
+    background-color: #c0daea2d;
+}
+
+.create-button {
+    color: #c0daea;
+    border: 1px solid #c0daea;
+}
+
+.delete-button {
+    display: flex;
+    color: #d17478;
+    border: 1px solid #d17478;
+    margin: 0 0 0 10px;
+}

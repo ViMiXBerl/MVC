@@ -1,0 +1,17 @@
+.main-stores-list {
+    width: 20%;
+}
+
+.main-stores-list__wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.stores-list-not-found {
+    display: flex;
+    justify-content: center;
+}

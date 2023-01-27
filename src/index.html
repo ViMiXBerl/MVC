@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="./styles/stores-wrapper.css" />
+        <link rel="stylesheet" href="./styles/stores-header.css" />
+        <link rel="stylesheet" href="./styles/button-footer.css" />
+        <link rel="stylesheet" href="./styles/stores-list-icon.css" />
+        <link rel="stylesheet" href="./styles/main-stores-list-footer.css" />
+        <link rel="stylesheet" href="./styles/main-store-details-footer.css" />
+        <link rel="stylesheet" href="./styles/main-stores-list.css" />
+        <link rel="stylesheet" href="./styles/main-stores-search-wrapper.css" />
+        <link rel="stylesheet" href="./styles/stores-list.css" />
+        <link rel="stylesheet" href="./styles/main-store-details.css" />
+        <link rel="stylesheet" href="./styles/contact-details.css" />
+        <link rel="stylesheet" href="./styles/products-filters.css" />
+        <link rel="stylesheet" href="./styles/products-table.css" />
+        <link rel="stylesheet" href="./styles/js-styles.css" />
+        <link rel="stylesheet" href="./styles/not-selected.css" />
+        <link rel="stylesheet" href="./styles/message.css" />
+        <link rel="stylesheet" href="./styles/asyncRequestSpinner.css" />
+        <link rel="stylesheet" href="./styles/modal-create-store.css" />
+        <link rel="stylesheet" href="./styles/confirmation-popup.css" />
+        <title>Stores list</title>
+    </head>
+    <body>
+        <main class="stores-wrapper">
+            <aside class="main-stores-list">
+                <div class="main-stores-list__wrapper">
+                    <header class="stores-header">
+                        <div class="stores-header__wrapper">
+                            <h3 class="stores-header__item">Stores list</h3>
+                        </div>
+                    </header>
+                    <div class="main-stores-search-wrapper">
+                        <form id="jsSearchForm" class="search-form">
+                            <div class="search-form__wrapper">
+                                <input
+                                    id="jsSearchFormInput"
+                                    class="search-form__input"
+                                    placeholder="search"
+                                    type="text"
+                                />
+                                <div class="search-form__label-wrapper">
+                                    <label
+                                        id="jsCircleClose"
+                                        class="search-form-label circle-close js-display-type_none"
+                                        title="close"
+                                    ></label>
+                                    <label
+                                        id="jsLabelSearch"
+                                        class="search-form-label label-search"
+                                        title="search"
+                                    ></label>
+                                    <label
+                                        id="jsLabelReload"
+                                        class="search-form-label label-reload"
+                                        title="Reload"
+                                    ></label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <figure class="main-stores-list__icon-wrapper">
+                        <img
+                            src="./images/to-top.svg"
+                            alt="to-top"
+                            class="main-stores-list__icon_top"
+                            title="Collapse header"
+                        />
+                        <img
+                            src="./images/drawing-pin.svg"
+                            alt="drawing-pin"
+                            class="main-stores-list__icon_drawing-pin"
+                            title="Pin header on press"
+                        />
+                    </figure>
+                    <ul class="stores-list ">
+                        <div
+                            id="jsStoresListWrapper"
+                            class="stores-list__wrapper"
+                        >
+                            <div
+                                id="js-stores-list-spinner"
+                                class="spinner-wrapper"
+                            >
+                                <div
+                                    class="spinner spinner--steps icon-spinner"
+                                    aria-hidden="true"
+                                ></div>
+                            </div>
+                        </div>
+                    </ul>
+                    <footer class="main-stores-list__footer">
+                        <div class="main-stores-list__footer-wrapper">
+                            <button
+                                id="jsCreateButton"
+                                class="button__footer create-button"
+                            >
+                                &#43; Create
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </aside>
+            <section
+                id="jsMainStoreDetails"
+                class="main-store-details js-display-type_none"
+            >
+                <div class="main-store-details__wrapper">
+                    <header class="stores-header">
+                        <div class="stores-header__wrapper">
+                            <h3 class="stores-header__item">Store Details</h3>
+                        </div>
+                    </header>
+                    <form class="contact-details">
+                        <div class="contact-details__wrapper">
+                            <p class="contact-details__item">
+                                <span class="contact-details__title"
+                                    >Email:</span
+                                >
+                                <span id="jsContactDetailsEmail"></span>
+                            </p>
+                            <p class="contact-details__item">
+                                <span class="contact-details__title"
+                                    >Phone Number:</span
+                                >
+                                <span id="jsContactDetailsNumber"></span>
+                            </p>
+                            <p class="contact-details__item">
+                                <span class="contact-details__title"
+                                    >Address:</span
+                                >
+                                <span id="jsContactDetailsAddress"></span>
+                            </p>
+                            <p class="contact-details__item">
+                                <span class="contact-details__title"
+                                    >Established Date:</span
+                                >
+                                <span
+                                    id="jsContactDetailsEstablishedDate"
+                                ></span>
+                            </p>
+                            <p class="contact-details__item">
+                                <span class="contact-details__title"
+                                    >Floor Area:</span
+                                >
+                                <span id="jsContactDetailsFloorArea"></span>
+                            </p>
+                        </div>
+                    </form>
+                    <figure class="main-stores-list__icon-wrapper">
+                        <img
+                            src="./images/to-top.svg"
+                            alt="to-top"
+                            class="main-stores-list__icon_top"
+                            title="Collapse header"
+                        />
+                        <img
+                            src="./images/drawing-pin.svg"
+                            alt="drawing-pin"
+                            class="main-stores-list__icon_drawing-pin"
+                            title="Pin header on press"
+                        />
+                    </figure>
+                    <div class="products-filters">
+                        <div class="products-filters__wrapper">
+                            <div
+                                id="jsProductsFilterTypeAll"
+                                class="products-filters__item item-checked"
+                            >
+                                <p
+                                    id="jsProductsFiltersAmount"
+                                    class="products-filters-type_all "
+                                ></p>
+                                <span
+                                    class="products-filters__text products-filters__text-all"
+                                >
+                                    All
+                                </span>
+                            </div>
+                            <hr noshade color="#e1e8e7" class="hr-checked" />
+                            <div
+                                id="jsProductsFilterTypeOk"
+                                class="products-filters__item"
+                            >
+                                <div class="products-filters__status">
+                                    <figure
+                                        id="productsFiltersFigureOk"
+                                        class="products-filters__figure products-filters_figure-ok"
+                                    >
+                                        <img
+                                            id="productsFiltersOkImg"
+                                            src="./images/filter-ok.svg"
+                                            alt="products-filters-ok"
+                                            class="products-filters_figure-size"
+                                        />
+                                    </figure>
+                                    <span class="products-filters__text"
+                                        >Ok</span
+                                    >
+                                </div>
+                                <p
+                                    id="jsProductsFiltersOk"
+                                    class="products-filters__text products-filters__text-number "
+                                ></p>
+                            </div>
+                            <div
+                                id="jsProductsFilterTypeStorage"
+                                class="products-filters__item"
+                            >
+                                <div class="products-filters__status">
+                                    <figure
+                                        id="productsFiltersFigureStorage"
+                                        class="products-filters__figure products-filters_figure-storage "
+                                    >
+                                        <img
+                                            id="productsFiltersStorageImg"
+                                            src="./images/out-of-storage.svg"
+                                            alt="products-filters-out-of-storage"
+                                            class="products-filters_figure-size"
+                                        />
+                                    </figure>
+                                    <span class="products-filters__text"
+                                        >Storage</span
+                                    >
+                                </div>
+                                <p
+                                    id="jsProductsFiltersStorage"
+                                    class="products-filters__text products-filters__text-number "
+                                ></p>
+                            </div>
+                            <div
+                                id="jsProductsFilterTypeOutOfStock"
+                                class="products-filters__item"
+                            >
+                                <div class="products-filters__status">
+                                    <figure
+                                        id="productsFiltersFigureOutOfStock"
+                                        class="products-filters__figure products-filters_figure-out-of-stock"
+                                    >
+                                        <img
+                                            id="productsFiltersOutOfStock"
+                                            src="./images/out-of-stock.svg"
+                                            alt="products-filters-out-of-stock"
+                                            class="products-filters_figure-size"
+                                        />
+                                    </figure>
+                                    <span class="products-filters__text">
+                                        Out of stock
+                                    </span>
+                                </div>
+                                <p
+                                    id="jsProductsFiltersOutOfStock"
+                                    class="products-filters__text products-filters__text-number "
+                                ></p>
+                            </div>
+                        </div>
+                    </div>
+                    <table
+                        id="jsProductsTable"
+                        class="products-table js-display-type_none"
+                    >
+                        <caption
+                            class="products-table__head products-table__title tr-style"
+                        >
+                            Products
+                        </caption>
+                        <thead class="products-table__head">
+                            <tr class="sticky-title tr-style">
+                                <td class="products-table__text td-style">
+                                    Name
+                                </td>
+                                <td
+                                    align="right"
+                                    class="products-table__text td-style"
+                                >
+                                    Price
+                                </td>
+                                <td class="products-table__text td-style">
+                                    Specs
+                                </td>
+                                <td class="products-table__text td-style">
+                                    SupplierInfo
+                                </td>
+                                <td class="products-table__text td-style">
+                                    Country of origin
+                                </td>
+                                <td class="products-table__text td-style">
+                                    Prod. company
+                                </td>
+                                <td class="products-table__text td-style">
+                                    Rating
+                                </td>
+                                <td class="td-style"></td>
+                            </tr>
+                        </thead>
+                        <tbody
+                            id="jsProductsTableBody"
+                            class="products-table__body"
+                        >
+                            <div
+                                id="jsProductsTableSpinner"
+                                class="spinner-wrapper "
+                            >
+                                <div
+                                    class="spinner spinner--steps icon-spinner"
+                                    aria-hidden="true"
+                                ></div>
+                            </div>
+                        </tbody>
+                    </table>
+                    <footer class="main-store-details__footer">
+                        <div class="main-store-details__footer-wrapper">
+                            <button class="button__footer create-button">
+                                + Create
+                            </button>
+                            <button
+                                id="jsDeleteButton"
+                                class="button__footer delete-button"
+                            >
+                                <img src="./images/garbage.svg" alt="garbage" />
+                                Delete
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+            <section id="jsNotSelectedStores" class="not-selected-stores">
+                <div class="not-selected-stores__wrapper">
+                    <header class="not-selected-stores__header">
+                        <div class="not-selected-stores_content-type_center">
+                            <h3 class="not-selected-stores_font-style_small">
+                                Store is not selected
+                            </h3>
+                        </div>
+                    </header>
+                    <div class="message">
+                        <div class="message__wrapper">
+                            <img
+                                src="./images/store.svg"
+                                alt="store"
+                                class="message__img-store"
+                            />
+                            <p class="message__title">
+                                The store is not selected
+                            </p>
+                            <p class="message__text">
+                                Please select the store to proceed
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                id="jsModalCreateStore"
+                class="modal-create-store js-display-type_none"
+            >
+                <div class="modal-create-store__wrapper">
+                    <header class="modal-create-store__header">
+                        <h3>Create new store</h3>
+                    </header>
+                    <form
+                        id="jsModalCreateStoreForm"
+                        class="modal-create-store__form"
+                    >
+                        <label
+                            id="jsModalCreateStoreNameLabel"
+                            class="input-wrapper"
+                            ><span class="required">&#10059;</span> Name:</label
+                        >
+                        <input
+                            id="jsModalCreateStoreName"
+                            class="modal-create-store__input"
+                            type="text"
+                            placeholder="Enter name"
+                            required
+                        />
+                        <label
+                            id="jsModalCreateStoreEmailLabel"
+                            class="input-wrapper"
+                            ><span class="required">&#10059;</span>Email:</label
+                        >
+                        <input
+                            id="jsModalCreateStoreEmail"
+                            class="modal-create-store__input"
+                            type="email"
+                            placeholder="Enter email"
+                            required
+                        />
+                        <label
+                            id="jsModalCreateStorePhoneNumberLabel"
+                            class="input-wrapper"
+                            ><span class="required">&#10059;</span>Phone
+                            Number:</label
+                        >
+                        <input
+                            id="jsModalCreateStorePhoneNumber"
+                            class="modal-create-store__input"
+                            type="text"
+                            placeholder="Enter phone number"
+                            required
+                        />
+                        <label
+                            id="jsModalCreateStoreAddressLabel"
+                            class="input-wrapper"
+                            ><span class="required">&#10059;</span
+                            >Address:</label
+                        >
+                        <input
+                            id="jsModalCreateStoreAddress"
+                            class="modal-create-store__input"
+                            type="text"
+                            placeholder="Enter address"
+                            required
+                        />
+                        <label
+                            id="jsModalCreateStoreEstablishedDateLabel"
+                            class="input-wrapper"
+                            ><span class="required">&#10059;</span>Established
+                            date:</label
+                        >
+                        <input
+                            id="jsModalCreateEstablishedDate"
+                            class="modal-create-store__input"
+                            type="date"
+                            required
+                        />
+                        <label
+                            id="jsModalCreateStoreFloorAreaLabel"
+                            class="input-wrapper"
+                            ><span class="required">&#10059;</span>Floor
+                            area:</label
+                        >
+                        <input
+                            id="jsModalCreateFloorArea"
+                            class="modal-create-store__input"
+                            type="text"
+                            placeholder="Enter floor area (in sq.m)"
+                            required
+                        />
+                    </form>
+                    <footer class="modal-create-store__footer">
+                        <div class="modal-create-store__footer-wrapper">
+                            <button
+                                id="jsModalCreateButton"
+                                class="modal-create-store__button modal-create-button"
+                                type="submit"
+                            >
+                                Create
+                            </button>
+                            <button
+                                id="jsModalCreateStoreCancelButton"
+                                class="modal-create-store__button modal-cancel-button"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+            <section
+                id="confirmationPopup"
+                class="confirmation-popup js-display-type_none"
+            >
+                <div class="confirmation-popup__wrapper">
+                    <header class="confirmation-popup__header">
+                        <img
+                            src="./images/quastion.svg"
+                            alt="Confirmation"
+                            class="confirmation-popup__image"
+                        />
+                        <h3>Confirmation</h3>
+                    </header>
+                    <div class="confirmation-popup__text-wrapper">
+                        <p class="confirmation-popup__text">
+                            Are you sure you want to delete this store ?
+                        </p>
+                    </div>
+                    <footer class="confirmation-popup__button-wrapper">
+                        <button
+                            id="jsConfirmationPopupOk"
+                            class="confirmation-popup__button confirmation-popup-ok"
+                        >
+                            Ok
+                        </button>
+                        <button
+                            id="jsConfirmationPopupCancel"
+                            class="confirmation-popup__button confirmation-popup-cancel"
+                        >
+                            Cancel
+                        </button>
+                    </footer>
+                </div>
+            </section>
+        </main>
+        <!-- <script src="./constants/constants.js"></script> -->
+        <script src="./index_mvc.js"></script>
+        <!-- <script src="./app.js"></script> -->
+    </body>
+</html>
